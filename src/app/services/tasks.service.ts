@@ -1,24 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Lists } from '../interfaces/list.interface';
 
 const BASE_URL = environment.base_url;
 
 @Injectable({
   providedIn: 'root'
 })
-export class ListService {
+export class TasksService {
 
   constructor( private http: HttpClient ) { }
 
-  getLists(){
-    return this.http.get<Lists>( `${ BASE_URL }/list` );
-  }
+  getTasks( listID: string ){
 
-  createList( title: string ){
-
-    return this.http.post( `${ BASE_URL }/list`, { title } );
+    return this.http.get( `${ BASE_URL }/list/tasks`, { headers: { id: listID } });
 
   }
 

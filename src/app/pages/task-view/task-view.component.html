@@ -7,23 +7,13 @@
                 Lists
             </h1>
 
-            <div class="list-menu">
-                <a class="list-menu-item is-active">
-                    <p>List one</p>
+            <div class="list-menu" *ngFor="let list of lists">
+                <a  (click)="showTasks( list._id )"
+                    class="list-menu-item is-active">
+                    <p>{{ list.title }}</p>
                 </a>
             </div>
 
-            <div class="list-menu">
-                <a class="list-menu-item">
-                    <p>List one</p>
-                </a>
-            </div>
-
-            <div class="list-menu">
-                <a class="list-menu-item">
-                    <p>List one</p>
-                </a>
-            </div>
 
             <button routerLink="/new-list"
                     class="button is-primary has-text-white">+ New List</button>
