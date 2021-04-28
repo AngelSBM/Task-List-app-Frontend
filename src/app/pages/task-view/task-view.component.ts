@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ListService } from 'src/app/services/list.service';
 
 @Component({
   selector: 'app-task-view',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskViewComponent implements OnInit {
 
-  constructor() { }
+  constructor( private listService: ListService ) { }
 
   ngOnInit(): void {
+
+    this.listService.getLists()
+          .subscribe( resp => {
+            console.log(resp);
+            
+          })
+
   }
 
 }
