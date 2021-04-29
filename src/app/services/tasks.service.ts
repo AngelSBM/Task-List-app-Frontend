@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { TasksResponse } from '../interfaces/task.interface';
 
 const BASE_URL = environment.base_url;
 
@@ -9,11 +10,12 @@ const BASE_URL = environment.base_url;
 })
 export class TasksService {
 
+
   constructor( private http: HttpClient ) { }
 
   getTasks( listID: string ){
 
-    return this.http.get( `${ BASE_URL }/list/tasks`, { headers: { id: listID } });
+    return this.http.get<TasksResponse>( `${ BASE_URL }/list/tasks`, { headers: { id: listID } });
 
   }
 

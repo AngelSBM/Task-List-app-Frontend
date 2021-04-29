@@ -8,8 +8,9 @@
             </h1>
 
             <div class="list-menu" *ngFor="let list of lists">
-                <a  (click)="showTasks( list._id )"
-                    class="list-menu-item is-active">
+                <a  [ngClass]="{ 'is-active': id === list._id }"
+                    (click)="showTasks( list._id )"
+                    class="list-menu-item">
                     <p>{{ list.title }}</p>
                 </a>
             </div>
@@ -26,21 +27,13 @@
                 Tasks
             </h1>
 
-            <div class="task">
-                <p>This is something I have to do</p>
+            <div class="task" *ngFor="let task of tasks">
+                <p>{{ task.title }}</p>
             </div>
 
-            <div class="task">
-                <p>This is something I have to do</p>
-            </div>
-
-            <div class="task">
-                <p>This is something I have to do</p>
-            </div>
-
-            <div class="task complete">
-                <p>This is something I have to do</p>
-            </div>
+            <button class="circle-add-button button">
+                +
+            </button>
 
         </div>
 

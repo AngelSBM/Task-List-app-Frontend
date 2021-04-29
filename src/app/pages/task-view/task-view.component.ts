@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { List } from 'src/app/interfaces/list.interface';
+import { Task } from 'src/app/interfaces/task.interface';
 import { ListService } from 'src/app/services/list.service';
 import { TasksService } from 'src/app/services/tasks.service';
 
@@ -14,30 +15,26 @@ export class TaskViewComponent implements OnInit {
                private taskService: TasksService ) { }
 
   public lists: List [] = [];
-
+  public tasks: Task[] = [];
+  public id: string = '';
+        
   ngOnInit(): void {
 
     this.listService.getLists()
-          .subscribe( resp => {
-                      
-            this.lists = resp.lists;
-
-            console.log(this.lists);
-            
-
-          })
+          .subscribe( resp => this.lists = resp.lists );
 
   }
 
 
   showTasks( id: string ){
-    console.log(id);
-    
+
+    this.id = id;
+
     //TODO: bring all the tasks in the list with the ID we are sending
     this.taskService.getTasks( id )
           .subscribe( resp => {
-            console.log(resp);
-            
+            this.tasks = resp.tasks;
+            console.log(this.tasks);
           })
 
   }

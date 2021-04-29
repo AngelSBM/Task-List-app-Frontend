@@ -1,0 +1,28 @@
+<div class="centered-content">
+
+    <div class="modal-box">
+
+        <h2 class="title">
+            Create a new task
+        </h2>
+
+            <p class="control is-expanded">
+                <input  
+                        #input
+                        class="input has-background-light is-medium" 
+                        type="text" 
+                        placeholder="Enter task name...">
+            </p>
+            
+            <br>
+
+            <div class="buttons is-right">
+                <button class="button is-medium" routerLink='/'>Go back</button>
+                <button 
+                        (click)="createTask( input.value )"
+                        class="button is-primary has-text-white is-medium">Add it!</button>
+            </div>
+    
+    </div>
+
+</div>
