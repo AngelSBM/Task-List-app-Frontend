@@ -31,7 +31,8 @@
                 <p>{{ task.title }}</p>
             </div>
 
-            <button class="circle-add-button button">
+            <button [routerLink]="['new-task', id]"
+                    class="circle-add-button button">
                 +
             </button>
 

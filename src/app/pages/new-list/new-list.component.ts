@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ListService } from 'src/app/services/list.service';
 
 @Component({
@@ -8,7 +9,8 @@ import { ListService } from 'src/app/services/list.service';
 })
 export class NewListComponent implements OnInit {
 
-  constructor( private listSerive: ListService ) { }
+  constructor( private listSerive: ListService,
+               private router: Router ) { }
 
   ngOnInit(): void {
   }
@@ -18,7 +20,7 @@ export class NewListComponent implements OnInit {
 
     this.listSerive.createList( value )
           .subscribe( resp => {
-            console.log(resp);            
+            this.router.navigateByUrl('/');            
           });
     
   }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TasksService } from 'src/app/services/tasks.service';
 
 @Component({
   selector: 'app-new-task',
@@ -7,14 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewTaskComponent implements OnInit {
 
-  constructor() { }
+  public listId: string = '';
+
+  constructor(  private taskService: TasksService,
+                private activatedRoute: ActivatedRoute,
+                private router: Router ) { }
 
   ngOnInit(): void {
+  
+    this.activatedRoute.params.subscribe( params => {
+      this.listId = params.listid;      
+    })
+    
   }
 
-  createTask( value: string ){
-    console.log(value);
-    
+  createTask( title: string ){
+    console.log(title);
+    this.taskService.createTask( title, this.listId )
+          .subscribe( resp => {
+            console.log(resp);
+            this.router.navigateByUrl('/');
+          })
   }
 
 }

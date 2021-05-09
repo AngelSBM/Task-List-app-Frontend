@@ -19,4 +19,14 @@ export class TasksService {
 
   }
 
+  createTask( title: string, listid: string  ){
+
+    return this.http.post( `${ BASE_URL }/list/tasks/post`, { title }, {
+      headers: {
+        listid
+      }
+    } )
+
+  }
+
 }
