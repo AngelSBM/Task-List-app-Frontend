@@ -29,4 +29,19 @@ export class TasksService {
 
   }
 
+  updateTask( task: Task ){
+
+    
+
+    return this.http.put(`${ BASE_URL }/list/tasks/update`, { 
+      title: task.title,
+      completed: !task.completed
+     }, {
+      headers: {
+        id: task._id
+      }
+    })
+
+  }
+
 }

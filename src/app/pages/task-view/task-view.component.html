@@ -27,7 +27,11 @@
                 Tasks
             </h1>
 
-            <div class="task" *ngFor="let task of tasks">
+            <div  
+                class="task" 
+                *ngFor="let task of tasks"
+                (click)="taskClicked( task )"
+                [ngClass]="{ 'complete': task.completed }">
                 <p>{{ task.title }}</p>
             </div>
 

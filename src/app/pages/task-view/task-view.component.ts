@@ -29,7 +29,7 @@ export class TaskViewComponent implements OnInit {
     this.activatedRoute.params.subscribe( params => {
       this.id = params.listTaskCreated;
       
-      this.showTasks( this.id )
+      // this.showTasks( this.id )
             
     })
 
@@ -47,6 +47,17 @@ export class TaskViewComponent implements OnInit {
             console.log(this.tasks);
           })
 
+  }
+
+  taskClicked( task: Task ){
+    
+    this.taskService.updateTask( task )
+          .subscribe( resp => {
+            
+            this.showTasks( this.id )
+            
+          })
+    
   }
 
 
